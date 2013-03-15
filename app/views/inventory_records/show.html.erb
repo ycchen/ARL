@@ -1,0 +1,43 @@
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="grey-box">
+        <p id="notice"><%= notice %></p>
+
+        <p>
+          <b>User:</b>
+          <%= @inventory_record.user %>
+        </p>
+
+        <p>
+          <b>Inventory:</b>
+          <%= @inventory_record.inventory %>
+        </p>
+
+        <p>
+          <b>Inventory status:</b>
+          <%= @inventory_record.inventory_status %>
+        </p>
+
+        <p>
+          <b>Location:</b>
+          <%= @inventory_record.location %>
+        </p>
+
+        <p>
+          <b>Latitude:</b>
+          <%= @inventory_record.latitude %>
+        </p>
+
+        <p>
+          <b>Longitude:</b>
+          <%= @inventory_record.longitude %>
+        </p>
+
+
+        <%= link_to 'Edit', edit_inventory_record_path(@inventory_record), class: "btn btn-primary" %> |
+        <%= link_to 'Back', inventory_records_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

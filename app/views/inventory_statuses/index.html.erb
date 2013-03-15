@@ -1,0 +1,31 @@
+<div class="root">
+  <div class="row">
+      <div class="span12">
+          <div class="grey-box">
+          <h1>Listing inventory_statuses</h1>
+
+          <table class="table table-striped">
+            <tr>
+              <th>Name</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+
+          <% @inventory_statuses.each do |inventory_status| %>
+            <tr>
+              <td><%= inventory_status.name %></td>
+              <td><%= link_to 'Show', inventory_status %></td>
+              <td><%= link_to 'Edit', edit_inventory_status_path(inventory_status) %></td>
+              <td><%= link_to 'Destroy', inventory_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+          </table>
+
+          <br />
+
+          <%= link_to 'New Inventory status', new_inventory_status_path, class: "btn btn-primary" %>
+        </div>      
+      </div>
+  </div>
+</div>

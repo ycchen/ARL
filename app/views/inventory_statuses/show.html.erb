@@ -1,0 +1,18 @@
+<div class="root">
+	<div class="row">
+		<div class="span12">
+			<div class="grey-box">
+				<p id="notice"><%= notice %></p>
+
+				<p>
+				  <b>Name:</b>
+				  <%= @inventory_status.name %>
+				</p>
+
+
+				<%= link_to 'Edit', edit_inventory_status_path(@inventory_status), class: "btn btn-primary" %> |
+				<%= link_to 'Back', inventory_statuses_path, class: "btn btn-primary" %>
+			</div>
+	 	</div>
+	</div>
+</div>

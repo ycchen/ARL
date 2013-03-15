@@ -1,0 +1,41 @@
+
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="grey-box">
+        <!-- <div class="black-transparent-box"> -->
+          <p id="notice"><%= notice %></p>
+
+          <p>
+            <b>Stockenumber:</b>
+            <%= @inventory.stockenumber %>
+          </p>
+
+          <p>
+            <b>Name:</b>
+            <%= @inventory.name %>
+          </p>
+
+          <p>
+            <b>Description:</b>
+            <%= @inventory.description %>
+          </p>
+
+          <p>
+            <b>Barcode:</b>
+            <%= @inventory.barcode %>
+          </p>
+
+          <p>
+            <b>Purchase date:</b>
+            <%= @inventory.purchase_date %>
+          </p>
+
+
+          <%= link_to 'Edit', edit_inventory_path(@inventory) , class: "btn btn-primary" %> |
+          <%= link_to 'Back', inventories_path , class: "btn btn-primary" %>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="root">
+  <div class="row">
+      <div class="span12">
+          <div class="grey-box">
+            <h1>Listing inventory_records</h1>
+
+            <table class="table table-striped">
+              <tr>
+                <th>User</th>
+                <th>Inventory</th>
+                <th>Inventory status</th>
+                <th>Location</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+
+            <% @inventory_records.each do |inventory_record| %>
+              <tr>
+                <td><%= inventory_record.user %></td>
+                <td><%= inventory_record.inventory %></td>
+                <td><%= inventory_record.inventory_status %></td>
+                <td><%= inventory_record.location %></td>
+                <td><%= inventory_record.latitude %></td>
+                <td><%= inventory_record.longitude %></td>
+                <td><%= link_to 'Show', inventory_record %></td>
+                <td><%= link_to 'Edit', edit_inventory_record_path(inventory_record) %></td>
+                <td><%= link_to 'Destroy', inventory_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+            </table>
+
+            <br />
+
+            <%= link_to 'New Inventory record', new_inventory_record_path, class: "btn btn-primary" %>
+        </div>      
+      </div>
+  </div>
+</div>
