@@ -139,7 +139,57 @@ rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
 
 $ rails g devise:views devise
 
-12. Added javascript to handle slidUp alert div
+12. Added javascript to handle slidUp alert div in application.js
+
+$(function(){
+  $('.alert').delay(5000).slideUp('slow');
+});
+
+13. Added validation for InventoryRecord model and added more field in attr_accessible
+
+/*  
+    attr_accessible 
+
+    validates :user_id, :presence => true
+    validates :inventory_id, :presence => true
+    validates :inventory_status_id , :presence => true
+    validates :location_id, :presence => true
+*/
+
+14. Added typical users HABTM (Has and belongs to many) roles relationship
+
+$ rails g scaffold role name:string
+
+$ rake db:migrate
+
+$ rails g scaffold roles_users role:references user:references
+
+$ rake db:migrate
+
+15. Added relationship between user and role model
+
+# user model
+
+has_many :roles_users
+has_many :roles, :through => :roles_users
+
+# role model
+
+has_many :roles_users
+has_many :users, :through => :roles_users
+
+
+15. Added "cancan" gem to handle user roles: cancan expect a curent_user method to exist in the controller, so we need to setup some authentication (such as Devise)
+
+https://github.com/ryanb/cancan
+
+http://www.tonyamoyal.com/2010/07/28/rails-authentication-with-devise-and-cancan-customizing-devise-controllers/
+
+# define abilities
+
+$ rails g cancan:ability
+
+
 
 
 

@@ -1,8 +1,18 @@
 class InventoryRecord < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :inventory
-  belongs_to :inventory_status
-  belongs_to :location
-  attr_accessible :latitude, :longitude
+  belongs_to :user #, :inverse_of => :inventory_records
+  belongs_to :inventory #, :inverse_of => :inventory_records
+  belongs_to :inventory_status #, :inverse_of => :inventory_records
+  belongs_to :location #, :inverse_of => :inventory_records
+
+  attr_accessible :user_id, :inventory_id, :inventory_status_id, :location_id
+  # , :latitude, :longitude
+
+
   
+  validates :user_id, :presence => true
+  validates :inventory_id, :presence => true
+  validates :inventory_status_id , :presence => true
+  validates :location_id, :presence => true
+  # validates :latitude, :presence => true
+  # validates :longitude, :presence => true
 end

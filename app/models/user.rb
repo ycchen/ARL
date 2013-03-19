@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
 has_many :inventory_records
 has_many :inventories, :through => :inventory_records				
 
+has_many :roles_users
+has_many :roles, :through => :roles_users
+
 
 	def avatar
 		Gravatar.new(self.email).image_url

@@ -1,5 +1,5 @@
 class Inventory < ActiveRecord::Base
-  attr_accessible :barcode, :description, :name, :purchase_date, :stockenumber
+  attr_accessible :barcode, :description, :name, :purchase_date, :stocknumber
 
   validates :barcode, :presence => true
   validates :description, :presence => true

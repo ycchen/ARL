@@ -1,7 +1,7 @@
 <%= form_for(@inventory_record) do |f| %>
   <% if @inventory_record.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@inventory_record.errors.count, "error") %> prohibited this inventory_record from being saved:</h2>
+      <h2><%= pluralize(@inventory_record.errors.count, "error") %> prohibited this inventory record from being saved:</h2>
 
       <ul>
       <% @inventory_record.errors.full_messages.each do |msg| %>
@@ -13,20 +13,23 @@
 
   <div class="field">
     <%= f.label :user %><br />
-    <%= f.text_field :user %>
+    <%= f.collection_select(:user_id, User.all, :id, :display_name, {include_blank: true}) %>
+
   </div>
   <div class="field">
     <%= f.label :inventory %><br />
-    <%= f.text_field :inventory %>
+    <%= f.collection_select(:inventory_id, Inventory.all, :id, :name, {include_blank: true}) %>
   </div>
   <div class="field">
     <%= f.label :inventory_status %><br />
-    <%= f.text_field :inventory_status %>
+    <%= f.collection_select(:inventory_status_id, InventoryStatus.all, :id, :name, {include_blank: true}) %>
   </div>
   <div class="field">
     <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.collection_select(:location_id, Location.all, :id, :name, {include_blank: true})%>
+    
   </div>
+  <!-- 
   <div class="field">
     <%= f.label :latitude %><br />
     <%= f.text_field :latitude %>
@@ -34,7 +37,8 @@
   <div class="field">
     <%= f.label :longitude %><br />
     <%= f.text_field :longitude %>
-  </div>
+  </div> 
+  -->
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
   </div>

@@ -2,7 +2,7 @@
   <div class="row">
       <div class="span12">
           <div class="grey-box">
-            <h1>Listing inventory_records</h1>
+            <h3>Listing Inventory Records</h3>
 
             <table class="table table-striped">
               <tr>
@@ -19,12 +19,12 @@
 
             <% @inventory_records.each do |inventory_record| %>
               <tr>
-                <td><%= inventory_record.user %></td>
-                <td><%= inventory_record.inventory %></td>
-                <td><%= inventory_record.inventory_status %></td>
-                <td><%= inventory_record.location %></td>
-                <td><%= inventory_record.latitude %></td>
-                <td><%= inventory_record.longitude %></td>
+                <td><%= inventory_record.user.display_name %></td>
+                <td><%= inventory_record.inventory.name %></td>
+                <td><%= inventory_record.inventory_status.name %></td>
+                <td><%= inventory_record.location.name %></td>
+                <td><%= inventory_record.location.latitude %></td>
+                <td><%= inventory_record.location.longitude %></td>
                 <td><%= link_to 'Show', inventory_record %></td>
                 <td><%= link_to 'Edit', edit_inventory_record_path(inventory_record) %></td>
                 <td><%= link_to 'Destroy', inventory_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>

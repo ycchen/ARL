@@ -10,6 +10,7 @@ gem 'devise'					# Authentication solution
 gem 'gravatar-ultimate'			# Gravatar API
 gem 'simple_form'				# SimpleForm (form processing)
 gem 'bootstrap-sass-rails'  	#
+gem 'cancan'					# authoriztion library to handle roles
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,6 +28,7 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'factory_girl_rails'	# fixtures replacment 	
 	gem 'capybara'				# interation testing tools for rack based web application
+	gem 'faker'					#  generate fake data
 end
 
 gem 'jquery-rails'

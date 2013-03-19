@@ -6,32 +6,32 @@
 
         <p>
           <b>User:</b>
-          <%= @inventory_record.user %>
+          <%= @inventory_record.user.display_name %>
         </p>
 
         <p>
           <b>Inventory:</b>
-          <%= @inventory_record.inventory %>
+          <%= @inventory_record.inventory.name %>
         </p>
 
         <p>
           <b>Inventory status:</b>
-          <%= @inventory_record.inventory_status %>
+          <%= @inventory_record.inventory_status.name %>
         </p>
 
         <p>
           <b>Location:</b>
-          <%= @inventory_record.location %>
+          <%= @inventory_record.location.name %>
         </p>
 
         <p>
           <b>Latitude:</b>
-          <%= @inventory_record.latitude %>
+          <%= @inventory_record.location.latitude %>
         </p>
 
         <p>
           <b>Longitude:</b>
-          <%= @inventory_record.longitude %>
+          <%= @inventory_record.location.longitude %>
         </p>
 
 

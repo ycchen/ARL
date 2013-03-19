@@ -1,4 +1,10 @@
 ARLInventory::Application.routes.draw do
+  resources :roles_users
+
+
+  resources :roles
+
+
   resources :inventory_records
 
 
