@@ -25,4 +25,13 @@ has_many :inventories, :through => :inventory_records
 	def avatar
 		Gravatar.new(self.email).image_url
 	end
+
+  def admin?
+    has_role?(:admin)
+  end
+
+  def user?
+    has_role?(:user) || admin?
+  end
+
 end

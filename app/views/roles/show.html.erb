@@ -1,10 +1,20 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @role.name %>
-</p>
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="grey-box">
+
+		<p id="notice"><%= notice %></p>
+
+		<p>
+		  <b>Name:</b>
+		  <%= @role.name %>
+		</p>
 
 
-<%= link_to 'Edit', edit_role_path(@role) %> |
-<%= link_to 'Back', roles_path %>
+		<%= link_to 'Edit', edit_role_path(@role) %> |
+		<%= link_to 'Back', roles_path %>
+      </div>      
+    </div>
+  </div>
+</div>

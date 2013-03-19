@@ -1,3 +1,4 @@
+
 class CreateInventoryRecords < ActiveRecord::Migration
   def change
     create_table :inventory_records do |t|

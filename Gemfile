@@ -12,6 +12,9 @@ gem 'rolify'					# role management
 gem 'gravatar-ultimate'			# Gravatar API
 gem 'simple_form'				# SimpleForm (form processing)
 gem 'bootstrap-sass-rails'  	#
+gem 'gmaps4rails'				# Google Maps for Rails
+gem 'geocoder'					# geocoding solution for Ruby
+
 
 
 # Gems used only for assets and not required
@@ -48,4 +51,4 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+ gem 'debugger'

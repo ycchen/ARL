@@ -61,7 +61,7 @@ $ rails g scaffold inventory stockenumber:string name:string description:text ba
 
 $ rails g scaffold inventory_status name:string
 
-$ rails g scaffold location name:string latitude:string longitude:string
+$ rails g scaffold location name:string address:string latitude:float longitude:float
 
 $ rails g scaffold inventory_record user:references inventory:references inventory_status:references location:references latitude:string longitude:string 
 
@@ -184,7 +184,8 @@ Added "cancan" gem to handle user roles: cancan expect a curent_user method to e
 
 * http://stackoverflow.com/questions/2170108/activerecordhasmanythroughassociationnotfounderror-in-usercontrollerwelcome
 
-/*
+/*********** this is replaced by using rolify gem
+
 14. Added typical users HABTM (Has and belongs to many) roles relationship
 
 $ rails g scaffold role name:string
@@ -206,7 +207,52 @@ has_many :roles, :through => :roles_users
 
 has_many :roles_users
 has_many :users, :through => :roles_users
-*/
+
+*****************/
+
+18. enable dynamic shortcuts for user class (user.is_admin? like methods), uncomment the line in 'config/initializers/rolify.rb'
+
+config.use_dynamic_shortcuts
+
+
+19. added gmaps4rails gem to Gemfile  for Google Maps for Rails
+
+https://github.com/apneadiving/Google-Maps-for-Rails
+
+http://learningpoint2.wordpress.com/2012/12/19/google-map-in-rails/
+
+gem 'gmaps4rails'
+
+* copy the assets to your app
+
+$ rails g gmaps4rails:install 
+
+* updated models\location.rb
+
+acts_as_gmappable :latitude => 'latitude', :longitude => 'longitude', :process_geocoding => :geocode?, :address => 'address', :normalized_address => 'address',:msg => "Sorry, not even Google could figure out where that is"
+
+  def geocode?
+    (!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
+  end
+
+  def gmaps4rails_address
+  address     
+  end
+
+  def gmaps4rails_infowindow
+    "<h4>#{name}</h4>" << "<h4>#{address}</h4>"
+  end
+
+* Added @json = Location.all_to_gmaps4rails in controllers/location.rb
+
+* Added following in layout\application.html.erb at the footer area
+
+<%= yield :scripts %>
+
+* Added <%= gmaps4rails(@json) %> in views/locations/index.html.erb
+
+
+
 
 
 

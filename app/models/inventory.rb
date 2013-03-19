@@ -1,4 +1,6 @@
 class Inventory < ActiveRecord::Base
+  resourcify
+	
   attr_accessible :barcode, :description, :name, :purchase_date, :stocknumber
 
   validates :barcode, :presence => true

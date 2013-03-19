@@ -1,4 +1,6 @@
 class InventoryRecord < ActiveRecord::Base
+  resourcify
+
   belongs_to :user #, :inverse_of => :inventory_records
   belongs_to :inventory #, :inverse_of => :inventory_records
   belongs_to :inventory_status #, :inverse_of => :inventory_records

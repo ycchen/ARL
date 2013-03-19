@@ -8,23 +8,24 @@
 			</button>
 			<a class="brand" href="/">Inventory System</a>
 			<div class="nav-collapse collapse">
-		        <% if current_user %>
+		        
 		        <ul class="nav">
 		          	<li><a href="/dashboard/">Dashboard</a></li>
-		          <li class="dropdown">
-		              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Management <b class="caret"></b></a>
-		              <ul class="dropdown-menu">
-				          <li><a href="<%= "#{inventories_path}" %>">Inventory</a></li>
-				          <li><a href="<%= "#{inventory_records_path}" %>">Hand Reciept</a></li>
-		                <li class="divider"></li>
-		                <li class="nav-header">Admin</li>
-		                <li><a href="<%= "#{inventory_statuses_path}" %>">Inventory Status</a></li>
-				        <li><a href="<%= "#{locations_path}" %>">Locations</a></li>
-				        <li><a href="<%= "#{roles_path}" %>">Roles</a></li>
-		              </ul>
-		          </li>
+		        	<% if current_user && current_user.admin? %>
+			          <li class="dropdown">
+			              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Management <b class="caret"></b></a>
+			              <ul class="dropdown-menu">
+					          <li><a href="<%= "#{inventories_path}" %>">Inventory</a></li>
+					          <li><a href="<%= "#{inventory_records_path}" %>">Hand Reciept</a></li>
+			                <li class="divider"></li>
+			                <li class="nav-header">Admin</li>
+			                <li><a href="<%= "#{inventory_statuses_path}" %>">Inventory Status</a></li>
+					        <li><a href="<%= "#{locations_path}" %>">Locations</a></li>
+					        <li><a href="<%= "#{roles_path}" %>">Roles</a></li>
+			              </ul>
+			          </li>
+		        	<% end %>
 		        </ul>
-		        <% end %>
 		        
 		        <ul class="nav pull-right">
 		          <% if current_user %>  
