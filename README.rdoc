@@ -16,13 +16,13 @@ $ rails g devise:install
 
 $ rails g devise User
 
-# added :display_name field, and enable all of additional fields and indexes
+* added :display_name field, and enable all of additional fields and indexes
 
 $ rails db:migrate
 
-# Updated appliction.html.erb with layout 
+* Updated appliction.html.erb with layout 
 
-# created flashes_helper in app\helpers\application_helper.rb
+* created flashes_helper in app\helpers\application_helper.rb
 
 def flashes_helper
     results = []
@@ -35,7 +35,7 @@ def flashes_helper
     results.join("").html_safe
 end
 
-# created title and show_title? method in \app\helpers\home_helper.rb
+* created title and show_title? method in \app\helpers\home_helper.rb
 
 def title(page_title, show_title=true)
   content_for(:title){h(page_title.to_s)}
@@ -46,7 +46,7 @@ def show_title?
   @show_title
 end
 
-# add twitter bootstrap library to application.css and application.js 
+* add twitter bootstrap library to application.css and application.js 
 
 
 6. generated home controller
@@ -156,6 +156,35 @@ $(function(){
     validates :location_id, :presence => true
 */
 
+14. Added "rolify", "cancan" gems to handle user roles
+
+* modified Gemfile
+* gem 'rolify' # role management
+* gem 'cancan' # authroization
+
+15. Create the Ability class from Cancan
+
+$ rails generate cancan:ability
+
+16. Create the Role class from rolify
+
+$ rails generate rolify:role
+
+17. Run migrations
+
+$ rake db:migrate
+
+Added "cancan" gem to handle user roles: cancan expect a curent_user method to exist in the controller, so we need to setup some authentication (such as Devise)
+
+* https://github.com/EppO/rolify/wiki/Tutorial
+
+* https://github.com/ryanb/cancan
+
+* http://www.tonyamoyal.com/2010/07/28/rails-authentication-with-devise-and-cancan-customizing-devise-controllers/
+
+* http://stackoverflow.com/questions/2170108/activerecordhasmanythroughassociationnotfounderror-in-usercontrollerwelcome
+
+/*
 14. Added typical users HABTM (Has and belongs to many) roles relationship
 
 $ rails g scaffold role name:string
@@ -168,42 +197,21 @@ $ rake db:migrate
 
 15. Added relationship between user and role model
 
-# user model
+* user model
 
 has_many :roles_users
 has_many :roles, :through => :roles_users
 
-# role model
+* role model
 
 has_many :roles_users
 has_many :users, :through => :roles_users
-
-
-15. Added "cancan" gem to handle user roles: cancan expect a curent_user method to exist in the controller, so we need to setup some authentication (such as Devise)
-
-https://github.com/ryanb/cancan
-
-http://www.tonyamoyal.com/2010/07/28/rails-authentication-with-devise-and-cancan-customizing-devise-controllers/
-
-# define abilities
-
-$ rails g cancan:ability
+*/
 
 
 
 
 
-
-Rails is a web-application framework that includes everything needed to create
-database-backed web applications according to the Model-View-Control pattern.
-
-This pattern splits the view (also called the presentation) into "dumb"
-templates that are primarily responsible for inserting pre-built data in between
-HTML tags. The model contains the "smart" domain objects (such as Account,
-Product, Person, Post) that holds all the business logic and knows how to
-persist themselves to a database. The controller handles the incoming requests
-(such as Save New Account, Update Product, Show Post) by manipulating the model
-and directing data to the view.
 
 In Rails, the model is handled by what's called an object-relational mapping
 layer entitled Active Record. This layer allows you to present the data from

@@ -7,10 +7,12 @@ gem 'rails', '3.2.12'
 
 
 gem 'devise'					# Authentication solution
+gem 'cancan'					# authoriztion library to handle roles
+gem 'rolify'					# role management
 gem 'gravatar-ultimate'			# Gravatar API
 gem 'simple_form'				# SimpleForm (form processing)
 gem 'bootstrap-sass-rails'  	#
-gem 'cancan'					# authoriztion library to handle roles
+
 
 # Gems used only for assets and not required
 # in production environments by default.

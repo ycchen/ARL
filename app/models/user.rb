@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -17,8 +18,8 @@ class User < ActiveRecord::Base
 has_many :inventory_records
 has_many :inventories, :through => :inventory_records				
 
-has_many :roles_users
-has_many :roles, :through => :roles_users
+# has_many :roles_users
+# has_many :roles, :through => :roles_users
 
 
 	def avatar

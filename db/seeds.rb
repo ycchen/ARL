@@ -21,8 +21,6 @@ r2 = Role.create!(name: "User")
 u = User.create!(email: "admin@test.com", password: "foobar1234", 
 			 password_confirmation: "foobar1234", display_name: "Admin")
 
-RolesUser.create!(user_id: u.id, role_id: r.id)
-# RolesUser.create!(user_id: u.id, role_id: r2.id)
 
 
 # pre-populate inventory_status data

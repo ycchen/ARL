@@ -110,6 +110,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12.2)
       json (~> 1.4)
+    rolify (3.2.0)
     rubyzip (0.9.9)
     sass (3.2.7)
     sass-rails (3.2.6)
@@ -159,6 +160,7 @@ DEPENDENCIES
   gravatar-ultimate
   jquery-rails
   rails (= 3.2.12)
+  rolify
   sass-rails (~> 3.2.3)
   simple_form
   sqlite3
