@@ -15,11 +15,9 @@ class User < ActiveRecord::Base
 	validates :password_confirmation, :presence => true
 	validates :display_name, :presence => true
 
-has_many :inventory_records
-has_many :inventories, :through => :inventory_records				
+  has_many :inventory_records
+  has_many :inventories, :through => :inventory_records				
 
-# has_many :roles_users
-# has_many :roles, :through => :roles_users
 
 
 	def avatar

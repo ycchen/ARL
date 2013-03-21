@@ -5,7 +5,7 @@ class InventoryRecord < ActiveRecord::Base
   belongs_to :inventory #, :inverse_of => :inventory_records
   belongs_to :inventory_status #, :inverse_of => :inventory_records
   belongs_to :location #, :inverse_of => :inventory_records
-
+  
   attr_accessible :user_id, :inventory_id, :inventory_status_id, :location_id
   # , :latitude, :longitude
 
