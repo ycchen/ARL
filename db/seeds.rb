@@ -28,12 +28,24 @@ InventoryStatus.create!(name: "missing")
 InventoryStatus.create!(name: "deaccessioned")
 
 # pre-populate locations data
-Location.create!(name: "ARL Buidling 4600",address: "ARL Buidling 4600", latitude: "39.507572", longitude: "-76.163051")
-Location.create!(name: "Aberdeen Proving Ground", address: "Aberdeen Proving Ground",latitude: "39.472467", longitude: "-76.129966")
-Location.create!(name: "DMS Herndon Office",address: "DMS Herndon Office", latitude: "38.934583", longitude: "-77.428441")
-Location.create!(name: "DMS Aberdden Office",address: "DMS Aberdden Office",latitude: "39.494369", longitude: "-76.186745")
-Location.create!(name: "White House", address: "White House, USA",latitude: "38.897683", longitude: "-77.036497")
-Location.create!(name: "Chen's House",address: "1904 North Adams St. Arlington, VA 22201", latitude: "38.895555", longitude: "-77.089095")
+# Location.create!(name: "Aberdeen Proving Ground", address: "Aberdeen Proving Ground",latitude: "39.472467", longitude: "-76.129966")
+# Location.create!(name: "BUCKINGHAM FOUNTAIN – CHICAGO, ILLINOIS",address: "BUCKINGHAM FOUNTAIN, CHICAGO, ILLINOIS", latitude: "38.934583", longitude: "-77.428441")
+Location.create!(name: "US Army Research Laboratory",address: "2800 Powder Mill Road, Adelphi, MD 20783, USA",latitude: "39.035865", longitude: "-76.95603899999999")
+Location.create!(name: "ARL DSRC",address: "Aberdeen Boulevard, Aberdeen Proving Ground, MD 21005, USA",latitude: "39.486891", longitude: "-76.13923849999999")
+Location.create!(name: "4603 Deer Creek Loop",address: "4603 Deer Creek Loop, Aberdeen Proving Ground, MD 21005, USA",latitude: "39.4855121", longitude: "-76.1542181")
+Location.create!(name: "4600 Deer Creek Loop", address: "4603 Deer Creek Loop, Aberdeen Proving Ground, MD 21005, USA",latitude: "39.48551730000001", longitude: "-76.15425429999999")
+Location.create!(name: "328 Hopkins Rd",address: "328 Hopkins Road, Aberdeen Proving Ground, MD 21005, USA", latitude: "39.477579", longitude: "-76.109241")
+Location.create!(name: "309 Hopkins Rd",address: "309 Hopkins Road, Aberdeen Proving Ground, MD 21005, USA", latitude: "39.477579", longitude: "-76.109241")
+Location.create!(name: "390 Hopkins Rd",address: "390 Hopkins Road, Aberdeen Proving Ground, MD 21005, USA", latitude: "39.477579", longitude: "-76.109241")
+Location.create!(name: "459 Mulberry Point Rd",address: "459 Mulberry Point Road, Aberdeen Proving Ground, MD 21005, USA",latitude: "38.934583", longitude: "-77.42844099999999")
+
+# Location.create!(name: "BUCKINGHAM FOUNTAIN in Chicago",address: "Clarence F. Buckingham Memorial Fountain, Chicago, IL 60604, USA",latitude: "41.875788", longitude: "-87.6189407")
+# Location.create!(name: "GREENFIELD VILLAGE in DETROIT",address: "Greenfield Village, Dearborn, MI 48124, USA",latitude: "42.3053156", longitude: "-83.2246496")
+# Location.create!(name: "BATTERY PARK in NEW YORK",address: "Battery Park, New York, NY 10004, USA",latitude: "40.7033262", longitude: "-74.0171778")
+# Location.create!(name: "INDEPENDENCE HALL in PHILADELPHIA",address: "Philadelphia City Hall, Chestnut Street, Philadelphia, PA 19106, USA",latitude: "39.9523882", longitude: "-75.1640233")
+# Location.create!(name: "STATUE OF LIBERTY in NEW YORK CITY",address: "Statue of Liberty National Monument, New York, NY 10004, USA",latitude: "40.6892494", longitude: "-74.04450039999999")
+# Location.create!(name: "Thomas Jefferson Memorial",address: "Thomas Jefferson Memorial, 900 Ohio Drive Southwest, Washington, DC 20242, USA",latitude: "38.881454", longitude: "-77.036551")
+
 
 # pre-populate Inventory data
 100.times do |n|
@@ -68,12 +80,12 @@ Location.create!(name: "Chen's House",address: "1904 North Adams St. Arlington, 
 	end
 	Inventory.create!(
 		stocknumber: "#{rand(8**8).to_s.rjust(8,'0').to_i}", 
-		name: Faker::Lorem.words.join(" "), 
+		name: "Item #{n} " + Faker::Lorem.word, 
 		description: Faker::Lorem.sentences.join(" "), 
 		barcode: "#{rand(8**8).to_s.rjust(8,'0').to_i}", 
 		purchase_date: "#{d}".to_i.days.ago)
 end
-
+# Faker::Lorem.words.join(" ")
 # pre-populate User data
 
 20.times do |n|

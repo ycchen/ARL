@@ -1,21 +1,15 @@
 ARLInventory::Application.routes.draw do
   resources :roles_users
 
-
   resources :roles
-
 
   resources :inventory_records
 
-
   resources :locations
-
 
   resources :inventory_statuses
 
-
   resources :inventories
-
 
   get "home/index"
 

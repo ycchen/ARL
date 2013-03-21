@@ -210,9 +210,20 @@ has_many :users, :through => :roles_users
 
 *****************/
 
-18. enable dynamic shortcuts for user class (user.is_admin? like methods), uncomment the line in 'config/initializers/rolify.rb'
 
-config.use_dynamic_shortcuts
+**************  READ THIS BEFORE ENABLE config.use_dynamic_shortcuts
+
+http://stackoverflow.com/questions/12672229/heroku-doesnt-work-rake-command-pgerror-error-relation-roles-does-no
+
+BY ENABLE config.use_dynamic_shortcuts will cause db:migrate raise exception of "could not find table roles", you will need to run db:migrate first then uncomment dynamic_shortcuts each time you want to initial the application
+
+http://danielboggs.com/articles/rails-authentication-and-user-management-continued
+
+**************
+
+18. enable dynamic shortcuts for user class (user.is_admin? like methods), uncomment "config.use_dynamic_shortcuts
+ " the line in 'config/initializers/rolify.rb'
+
 
 
 19. added gmaps4rails gem to Gemfile  for Google Maps for Rails
