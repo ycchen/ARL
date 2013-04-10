@@ -6,7 +6,8 @@ class InventoriesController < ApplicationController
   # GET /inventories
   # GET /inventories.json
   def index
-    @inventories = Inventory.all
+    # @inventories = Inventory.order("name")
+    @inventories = Inventory.page(params[:page])
     # @inventories = Inventory.includes(:inventory_records)
     # @inventories = InventoryRecord.includes(:inventory,:location)
     respond_to do |format|

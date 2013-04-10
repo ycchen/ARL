@@ -14,6 +14,7 @@ gem 'simple_form'				# SimpleForm (form processing)
 gem 'bootstrap-sass-rails'  	# bootstrap framework
 gem 'gmaps4rails'				# Google Maps for Rails
 gem 'geocoder'					# geocoding solution for Ruby
+gem 'kaminari'					# pagination 
 
 
 

@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   has_many :inventory_records
   has_many :inventories, :through => :inventory_records				
 
-
+# override the default "per_page" for kaminari pagination
+  paginates_per 5
 
 	def avatar
 		Gravatar.new(self.email).image_url

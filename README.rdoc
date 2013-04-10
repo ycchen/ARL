@@ -323,3 +323,21 @@ Add before_filter : isadmin? for all models controllers
 
 before_filter :authenticate_user!
 before_filter :isAdmin?
+
+26. Added pagination for all models using Kaminari gem
+
+Kaminari configuration options
+
+$ rails g kaminari:config # generated config/initializers/kaminari_confifg.rb file
+
+https://github.com/amatsuda/kaminari
+
+If you want to change default "per_page" value, you can do it on each model
+
+# Kaminari will crashed for ruby 1.9.3-p362, but works fine on ruby 1.9.3-p392
+
+class User < ActiveRecord::Base
+  paginates_per 10
+end
+
+http://railscasts.com/episodes/254-pagination-with-kaminari?view=asciicast

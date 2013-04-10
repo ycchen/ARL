@@ -19,4 +19,7 @@ class Inventory < ActiveRecord::Base
   scope :checkedout,    Inventory.where("id IN (select inventory_id from inventory_records where inventory_records.inventory_id = inventories.id and inventory_status_id=3)")
   scope :missing,       Inventory.where("id IN (select inventory_id from inventory_records where inventory_records.inventory_id = inventories.id and inventory_status_id=4)")
   scope :deaccessioned, Inventory.where("id IN (select inventory_id from inventory_records where inventory_records.inventory_id = inventories.id and inventory_status_id=5)")
+
+  # override the default "per_page" for kaminari pagination
+  paginates_per 10
 end
