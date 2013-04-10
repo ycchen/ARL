@@ -33,6 +33,7 @@
               <%= link_to 'New Location', new_location_path, class: "btn btn-primary" %>
 
               <br/>
+              <%# simple_format @location_json.to_yaml %>
               <%= gmaps4rails(@location_json) %>
         </div>      
       </div>

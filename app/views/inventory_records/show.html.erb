@@ -34,6 +34,9 @@
           <%= @inventory_record.location.longitude %>
         </p>
 
+        <p>
+            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@inventory_record.location.latitude}%2C#{@inventory_record.location.longitude}" %>
+        </p>
 
         <%= link_to 'Edit', edit_inventory_record_path(@inventory_record), class: "btn btn-primary" %> |
         <%= link_to 'Back', inventory_records_path, class: "btn btn-primary" %>

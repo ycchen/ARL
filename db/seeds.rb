@@ -27,6 +27,13 @@ InventoryStatus.create!(name: "checked-out")
 InventoryStatus.create!(name: "missing")
 InventoryStatus.create!(name: "deaccessioned")
 
+# pre-populate categories data
+Category.create!(name: "Computer", description: "Computer related")
+Category.create!(name: "Furniture", description: "Furniture related")
+Category.create!(name: "Laboratory", description: "Laboratory related equipment")
+
+
+
 # pre-populate locations data
 # Location.create!(name: "Aberdeen Proving Ground", address: "Aberdeen Proving Ground",latitude: "39.472467", longitude: "-76.129966")
 # Location.create!(name: "BUCKINGHAM FOUNTAIN – CHICAGO, ILLINOIS",address: "BUCKINGHAM FOUNTAIN, CHICAGO, ILLINOIS", latitude: "38.934583", longitude: "-77.428441")

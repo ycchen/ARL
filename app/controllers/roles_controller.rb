@@ -1,4 +1,6 @@
 class RolesController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :isAdmin?
   # GET /roles
   # GET /roles.json
   def index

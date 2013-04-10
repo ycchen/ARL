@@ -35,6 +35,9 @@
             <br />
 
             <%= link_to 'New Inventory record', new_inventory_record_path, class: "btn btn-primary" %>
+
+            <br/>
+            <%= gmaps4rails(@location_json) %>
         </div>      
       </div>
   </div>

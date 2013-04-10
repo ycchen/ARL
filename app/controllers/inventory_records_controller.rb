@@ -1,9 +1,18 @@
 class InventoryRecordsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :isAdmin?
   # GET /inventory_records
   # GET /inventory_records.json
   def index
-    @inventory_records = InventoryRecord.all
+    if params[:user_id]
+      @inventory_records = current_user.inventory_records.order("created_at desc")
+    else
+      @inventory_records = InventoryRecord.all
+    end
+    
+    
+    # print @inventory_records.map(&:location_id)
+    @location_json = Location.where("id in (?)", @inventory_records.map(&:location_id)).to_gmaps4rails
 
     respond_to do |format|
       format.html # index.html.erb

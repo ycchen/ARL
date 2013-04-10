@@ -1,0 +1,20 @@
+<div class="root">
+    <div class="row">
+        <div class="span12">
+            <div class="grey-box">   
+            	
+				<p id="notice"><%= notice %></p>
+
+				<p>
+				  <b>Name:</b>
+				  <%= @brand.name %>
+				</p>
+
+
+				<%= link_to 'Edit', edit_brand_path(@brand) %> |
+				<%= link_to 'Back', brands_path %>
+
+            </div>      
+        </div>
+    </div>
+</div>

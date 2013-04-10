@@ -1,5 +1,6 @@
 class InventoryStatusesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :isAdmin?
   # GET /inventory_statuses
   # GET /inventory_statuses.json
   def index

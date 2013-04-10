@@ -11,7 +11,7 @@ gem 'cancan'					# authoriztion library to handle roles
 gem 'rolify'					# role management
 gem 'gravatar-ultimate'			# Gravatar API
 gem 'simple_form'				# SimpleForm (form processing)
-gem 'bootstrap-sass-rails'  	#
+gem 'bootstrap-sass-rails'  	# bootstrap framework
 gem 'gmaps4rails'				# Google Maps for Rails
 gem 'geocoder'					# geocoding solution for Ruby
 

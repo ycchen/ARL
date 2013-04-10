@@ -1,9 +1,29 @@
 <div class="root">
 	<div class="row">
 		<div class="span12">
-			<div class="grey-box">
-				<h1>Home#index</h1>
-				<p>Find me in app/views/home/index.html.erb</p>
+			<div class="row">
+				<div class="span8">
+					<div class="grey-box">
+						<h3>Inventories status</h3>
+						
+						<div id="recent_posts">
+							<%= render :partial => 'recent_post' %>
+						</div>
+						
+					</div>
+				</div>
+				<div class="span4">
+					<div class='black-transparent-box'>
+						<h3>Welcome to LITMaS</h3>
+						<hr />
+						<p>
+						Have too many inventory tracking platforms? LITMas allows you to combine
+						your paper, EARL, etc inventory into a single - easy to
+						navigate interface. Check it out!
+						</p>
+					</div>
+			          	
+				</div>
 			</div>
 	 	</div>
 	</div>

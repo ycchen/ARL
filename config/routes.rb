@@ -1,4 +1,17 @@
 ARLInventory::Application.routes.draw do
+  # get "users/index"
+
+  match '/users', :to => 'users#index', :as => "all_users", :via => "get"
+  resources :groups
+
+  resources :brands
+
+  resources :categories
+
+  # get "dashboard/show"
+
+  resource :dashboard, :only => [:show]
+
   resources :roles_users
 
   resources :roles

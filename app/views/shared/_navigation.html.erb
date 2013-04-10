@@ -23,7 +23,10 @@
 			                <li class="nav-header">Admin</li>
 			                <li><a href="<%= "#{inventory_statuses_path}" %>">Inventory Status</a></li>
 					        <li><a href="<%= "#{locations_path}" %>">Locations</a></li>
+					        <li><a href="<%= "#{categories_path}" %>">Categories</a></li>
+					        <li><a href="<%= "#{brands_path}" %>">Brands</a></li>
 					        <li><a href="<%= "#{roles_path}" %>">Roles</a></li>
+					        <li><a href="<%= "#{all_users_path}" %>">Users</a></li>
 			              </ul>
 			          </li>
 		        	<% end %>
@@ -34,7 +37,7 @@
 		              <li class="dropdown">
 		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logged in as <img src="<%= current_user.avatar%>" class="avatar"></img> <%= current_user.display_name %><b class="caret"></b></a>
 		                <ul class="dropdown-menu">
-		                  <li><%= link_to 'My Post', root_path %></li>
+		                  <li><%= link_to 'My Inventories', inventory_records_path(:user_id =>current_user) %></li>
 		                  <li><%= link_to 'Sign out', destroy_user_session_url(), :method => :delete %></li>  
 		                  <li><%= link_to "Profile", edit_user_registration_path(current_user) %></li>
 		                </ul>

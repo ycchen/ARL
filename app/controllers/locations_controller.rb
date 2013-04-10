@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :isAdmin?
   # GET /locations
   # GET /locations.json
   def index

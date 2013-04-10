@@ -1,12 +1,14 @@
 class InventoriesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :isAdmin?
   load_and_authorize_resource
   
   # GET /inventories
   # GET /inventories.json
   def index
     @inventories = Inventory.all
-
+    # @inventories = Inventory.includes(:inventory_records)
+    # @inventories = InventoryRecord.includes(:inventory,:location)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @inventories }
@@ -83,4 +85,5 @@ class InventoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

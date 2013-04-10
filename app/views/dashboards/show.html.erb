@@ -1,0 +1,38 @@
+
+<div class="root">
+	<div class="row">
+		<div class="span12">
+			<div class="grey-box">
+				<h3>My inventories</h3>
+				<table class="table table-striped">
+					<tr>
+		                <th>User</th>
+		                <th>Inventory</th>
+		                <th>Inventory status</th>
+		                <th>Location</th>
+		                <th>Latitude</th>
+		                <th>Longitude</th>
+		                <th></th>
+		                <th></th>
+		                <th></th>
+	              	</tr>
+					<% @myhandreciepts.each do |inventory_record| %>
+					<tr>
+						<td><%= inventory_record.user.display_name %></td>
+						<td><%= inventory_record.inventory.name %></td>
+						<td><%= inventory_record.inventory_status.name %></td>
+						<td><%= inventory_record.location.name %></td>
+						<td><%= inventory_record.location.latitude %></td>
+						<td><%= inventory_record.location.longitude %></td>
+					</tr>	
+					<% end %>
+				</table>
+				
+				<% @HandRecieptsCount.each do |paper, count| %>
+					<%= paper %>, <%= count %><br/>
+				<% end %>
+			</div>
+	 	</div>
+	</div>
+</div>
+

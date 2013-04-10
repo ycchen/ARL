@@ -1,0 +1,22 @@
+
+<% @list.each do |item| %>
+	<div class="row">
+		<div class="span7 well">
+			<div class="span1" style="margin-left: -3px">
+				<img src="<%= item.user.avatar %>"/>
+			</div>
+			<div class="span4">
+				<span class="display-name"><%= item.user.display_name %></span><br/>
+				<span class="text-message">
+					<%= item.inventory.name %><br/>
+					Status: <%= item.inventory_status.name %><br/>
+					Location: <%= item.location.name %><br/>
+					<%= item.location.latitude %>, <%= item.location.longitude %><br/>
+				</span>
+				<span calss="light">
+					Posted: <%= time_ago_in_words(item.created_at) %>
+				</span>
+			</div>
+		</div>
+	</div>
+<% end %>
