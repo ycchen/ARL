@@ -1,11 +1,13 @@
 class Inventory < ActiveRecord::Base
   resourcify
 	
-  attr_accessible :barcode, :description, :name, :purchase_date, :stocknumber
+  attr_accessible :barcode, :description, :name, :purchase_date, :stocknumber, :category_ids
 
   has_many :inventory_records
   has_many :locations, :through => :inventory_records
 
+  has_many :inventory_categorys
+  has_many :categories, :through => :inventory_categorys
 
   validates :barcode, :presence => true
   validates :description, :presence => true
@@ -22,4 +24,19 @@ class Inventory < ActiveRecord::Base
 
   # override the default "per_page" for kaminari pagination
   paginates_per 10
+
+
+  def category_ids=(params)
+      self.categories =[]
+      params.each do |id|
+        unless id.to_s.empty?
+          category = Category.find(id)
+          categories << category
+        end
+        save
+      end
+  end
+
+
+
 end

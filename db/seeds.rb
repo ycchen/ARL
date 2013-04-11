@@ -71,26 +71,35 @@ Location.create!(name: "459 Mulberry Point Rd",address: "459 Mulberry Point Road
 	# 	else
 	# 		d=2
 	# end
+	# cids =[]
 	case  n
 		when 0..30
 			d = 100
+			# cids.push(1,2)
 		when 31..50
 			d = 300
+			# cids.push(1,3)
 		when 51..70
 			d = 600
+			# cids.push(2,3)
 		when 71..90
 			d = 1200
+			# cids.push(1,2,3)
 		when 91..100
 			d = 1500
+			# cids.push(1,2,3)
 		else
 			d=2
-	end
+			# cids.push(2,3)
+		end
 	Inventory.create!(
 		stocknumber: "#{rand(8**8).to_s.rjust(8,'0').to_i}", 
 		name: "Item #{n} " + Faker::Lorem.word, 
 		description: Faker::Lorem.sentences.join(" "), 
 		barcode: "#{rand(8**8).to_s.rjust(8,'0').to_i}", 
+		category_ids: [Category.first.id.to_s, Category.last.id.to_s],
 		purchase_date: "#{d}".to_i.days.ago)
+		
 end
 # Faker::Lorem.words.join(" ")
 # pre-populate User data
@@ -101,5 +110,11 @@ end
 	# added 'user' to the role table
 	endUser.add_role "user"
 end
+
+u2 = User.create!(email: "yungchih_chen@yahoo.com", password: "foobar1234", 
+			 password_confirmation: "foobar1234", display_name: "Yungchih")
+
+# assigned admin role to the user
+u2.add_role "admin"
 
 

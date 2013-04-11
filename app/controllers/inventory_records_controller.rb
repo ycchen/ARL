@@ -50,17 +50,19 @@ class InventoryRecordsController < ApplicationController
   # POST /inventory_records
   # POST /inventory_records.json
   def create
-    @inventory_record = InventoryRecord.new(params[:inventory_record])
+    raise params[:inventory_record].inspect
+    
+    # @inventory_record = InventoryRecord.new(params[:inventory_record])
 
-    respond_to do |format|
-      if @inventory_record.save
-        format.html { redirect_to @inventory_record, notice: 'Inventory record was successfully created.' }
-        format.json { render json: @inventory_record, status: :created, location: @inventory_record }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @inventory_record.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @inventory_record.save
+    #     format.html { redirect_to @inventory_record, notice: 'Inventory record was successfully created.' }
+    #     format.json { render json: @inventory_record, status: :created, location: @inventory_record }
+    #   else
+    #     format.html { render action: "new" }
+    #     format.json { render json: @inventory_record.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PUT /inventory_records/1

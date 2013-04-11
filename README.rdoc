@@ -302,8 +302,6 @@ $ rails g scaffold group name:string description:text
 
 ========= generate join models  =====================
 
-$ rails g model categories_inventory category:references inventory:references
-
 23. Generate user controller
 
 $ rails g controller Users index
@@ -341,3 +339,40 @@ class User < ActiveRecord::Base
 end
 
 http://railscasts.com/episodes/254-pagination-with-kaminari?view=asciicast
+
+27. Added inventory_categories model
+
+$ rails g model inventory_category inventory:references category:references
+
+$ rake db:migrate
+
+Added relationship between category, inventory, and inventory_category models
+
+# category model 
+has_many :inventory_categorys
+has_many :inventories, :through => :inventory_categorys
+
+# inventory model
+has_many :inventory_categorys
+has_many :categories, :though => :inventory_categorys
+
+# inventory_category model
+belongs_to :inventory
+belongs_to :category
+
+Added following method to \models\inventory.rb, and added :category_ids in attr_accessible
+
+def category_ids=(params)
+  self.categories =[]
+  params.each do |id|
+    unless id.to_s.empty?
+      category = Category.find(id)
+      categories << category
+    end
+    save
+  end
+end
+
+28. Updated seed.rb file for pre-populate inventory data with assigned categories.
+
+
