@@ -6,8 +6,10 @@ class InventoryRecordsController < ApplicationController
   def index
     if params[:user_id]
       @inventory_records = current_user.inventory_records.order("created_at desc")
+    elsif params[:search]
+      @inventory_records = InventoryRecord.search(params[:search])
     else
-      @inventory_records = InventoryRecord.all
+      @inventory_records = InventoryRecord.order("created_at desc")
     end
     
     
@@ -50,19 +52,35 @@ class InventoryRecordsController < ApplicationController
   # POST /inventory_records
   # POST /inventory_records.json
   def create
-    raise params[:inventory_record].inspect
-    
+    # raise params[:inventory_record].inspect
+    @inventory_records =[] 
+    success = true
+
+    # params[:inventory_record][:inventory_id].each do |id|
+    #   @inventory_records << id
+    # end
+    # raise @inventory_records.inspect
+
+    params[:inventory_record][:inventory_id].each do |id|
+      ir = InventoryRecord.new
+      ir.user_id = params[:inventory_record][:user_id].to_i
+      ir.inventory_id = id.to_i
+      ir.inventory_status_id = params[:inventory_record][:inventory_status_id].to_i
+      ir.location_id = params[:inventory_record][:location_id].to_i
+      @inventory_records << ir
+      success &&= ir.save
+    end
     # @inventory_record = InventoryRecord.new(params[:inventory_record])
 
-    # respond_to do |format|
-    #   if @inventory_record.save
-    #     format.html { redirect_to @inventory_record, notice: 'Inventory record was successfully created.' }
-    #     format.json { render json: @inventory_record, status: :created, location: @inventory_record }
-    #   else
-    #     format.html { render action: "new" }
-    #     format.json { render json: @inventory_record.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if success
+        format.html { redirect_to inventory_records_path , notice: 'Inventory record was successfully created.' }
+        # format.json { render json: new_inventory_record_path, status: :created, location: @inventory_record }
+      else
+        format.html { render action: "new" }
+        # format.json { render json: @inventory_record.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /inventory_records/1

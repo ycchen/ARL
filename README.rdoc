@@ -375,4 +375,39 @@ end
 
 28. Updated seed.rb file for pre-populate inventory data with assigned categories.
 
+Multiple select box #1
 
+<%= f.collection_select(:inventory_id, Inventory.unregistered, :id, :name, {include_blank: true}, {multiple: true}) %>
+
+Multiple select box #2
+
+<%= f.select(:inventory_id, Inventory.unregistered.collect{|x| [x.name, x.id]}, {}, {:multiple => true, :size => 10}) %>
+
+Multiple select box #3
+
+<%= select_tag("inventory_record[inventory_id][]", options_from_collection_for_select(Inventory.unregistered,"id", "name"), :multiple => true) %>
+
+
+Checkboxes
+
+<% Inventory.unregistered.each do |item| %>
+  <%= check_box_tag "inventory_record[inventory_id][]", item.id %>
+  <%= lable_tag dom_id(ite), item.name %>
+<% end %>
+
+
+29. Generate Unique Random string in ruby
+$ require 'securerandom'
+$ SecureRandom.hex(13)
+$ SecureRandom.hex(15)
+$ SecureRandom.hex(32)
+
+api_string = Array.new(32){rand(36).to_s(36)}.join
+
+ActiveSupport::SecureRandom.hex(32)
+
+30. Added handreciept model/controller/view
+$ rails g scaffold hand_reciept reciept:string user:references
+
+31. Added handreciept_detail model/controller/view
+$ rails g scaffold handreciept_detail hand_reciept:references inventory:references starts_at:datetime ends_at:datetime out_at:datetime in_at:datetime out_assistant_id:integer in_assistant_id:integer request_note:text approver_id:integer approval_note:text location:references inventory_status:references

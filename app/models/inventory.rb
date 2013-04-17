@@ -25,7 +25,7 @@ class Inventory < ActiveRecord::Base
   # override the default "per_page" for kaminari pagination
   paginates_per 10
 
-
+  # params[:category_ids].map{|cid| Category.find cid}
   def category_ids=(params)
       self.categories =[]
       params.each do |id|

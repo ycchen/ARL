@@ -1,0 +1,23 @@
+<div class="root">
+	<div class="row">
+		<div class="span12">
+			<div class="grey-box">
+				<p id="notice"><%= notice %></p>
+
+				<p>
+				  <b>Reciept:</b>
+				  <%= @hand_reciept.reciept %>
+				</p>
+
+				<p>
+				  <b>User:</b>
+				  <%= @hand_reciept.user.display_name %>
+				</p>
+
+
+				<%= link_to 'Edit', edit_hand_reciept_path(@hand_reciept) %> |
+				<%= link_to 'Back', hand_reciepts_path %>
+			</div>      
+		</div>
+	</div>
+</div>

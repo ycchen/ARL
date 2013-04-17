@@ -1,4 +1,7 @@
 ARLInventory::Application.routes.draw do
+  resources :hand_reciepts
+
+
   # get "users/index"
 
   match '/users', :to => 'users#index', :as => "all_users", :via => "get"

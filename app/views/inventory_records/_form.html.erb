@@ -16,19 +16,27 @@
     <div class="controls">
       <%= f.collection_select(:user_id, User.all, :id, :display_name, {include_blank: true}) %>
     </div>
-
   </div>
   
   <div class="control-group">
     <%= f.label :inventory, :class => 'control-label' %>
     <div class="controls">
+
       <% if params[:action] == "new" %>
-        <%= f.collection_select(:inventory_id, Inventory.unregistered, :id, :name, {include_blank: true}) %>
+        <%# f.collection_select(:inventory_id, Inventory.unregistered, :id, :name, {include_blank: true}, {multiple: true}) %>
+        <!-- 
+        <% Inventory.unregistered.each do |item| %>
+          <%= check_box_tag "inventory_record[inventory_id][]", item.id %>
+          <%= label_tag dom_id(item), item.name %>
+        <% end %>
+ -->
+<!--         <%= f.select(:inventory_id, Inventory.unregistered.collect{|x| [x.name, x.id]},{}, {:multiple => true, :size => 10}) %> -->
+
+        <%= select_tag("inventory_record[inventory_id][]", options_from_collection_for_select(Inventory.all,"id","name"), :multiple =>true ) %>
       <% else %>
         <%= f.collection_select(:inventory_id, Inventory.all, :id, :name, {include_blank: true}) %>
       <% end %>
     </div>
-
   </div>
   
   <div class="control-group">
@@ -42,7 +50,6 @@
     <div class="controls">
       <%= f.collection_select(:location_id, Location.all, :id, :name, {include_blank: true})%>
     </div>
-    
   </div>
   <!-- 
   <div class="field">

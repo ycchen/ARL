@@ -1,0 +1,30 @@
+<%= form_for(@hand_reciept, :html => {:class => 'form-horizontal'}) do |f| %>
+  <% if @hand_reciept.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hand_reciept.errors.count, "error") %> prohibited this hand_reciept from being saved:</h2>
+
+      <ul>
+      <% @hand_reciept.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :reciept, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :reciept,:readonly => true, :class => 'text_field'%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :user, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select(:user_id, User.all, :id, :display_name)%>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
